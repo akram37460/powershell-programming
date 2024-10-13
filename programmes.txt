@@ -65,3 +65,15 @@ if( $folderExistOrNot ) {
 } else {
     Write-Host "Folder path is not valid"
 }
+
+
+$Path="D:\WorkSpace"
+$date=(Get-Date).AddDays(-3)
+$ItemDetails=Get-ChildItem $path
+$lodname=get-date -Format "yyyyMMddHHmmss" 
+$Result=$ItemDetails|Where-Object {$_.CreationTime -gt $date }|Select-Object -Property name,CreationTime,@{n="Path";e={$_.Fullname}}
+Remove-Item -Path "D:\WorkSpace\olderfile.csv" -Verbose
+$Result|Export-Csv -Path "D:\WorkSpace\olderfile$($lodname).csv" -NoTypeInformation  -Verbose
+
+
+
