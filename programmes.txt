@@ -1,0 +1,67 @@
+#1. stop the spooler service if it is running
+
+$spoolerService = Get-Service -Name Spooler
+
+if($spoolerService.Status -eq 'Running') {
+    Write-Host "Spooler Service is stopped"
+    $spoolerService = Stop-Service -Name Spooler
+} else {
+    Write-Host "Spooler Service has not runing"
+}
+
+
+#2. wap to restart service if spooler service is running  
+
+$spoolerService = Get-Service -Name Spooler
+
+if($spoolerService.Status -eq 'Stopped') {
+    Write-Host "Spooler Service is started"
+    $spoolerService = Restart-Service -Name Spooler
+} else {
+    Write-Host "Spooler Service has runing"
+}
+
+
+
+#3. check the notepad process is runing or not  
+
+$notepadProcess = Get-Process -Name Notepad -Debug
+if($notepadProcess.Status) {
+    Write-host = "Note pad process is runing" -BackgroundColor DarkGreen
+}
+else {
+    Write-host = "Note pad process is not runing" -BackgroundColor red
+}
+
+
+#4. Store 3 services in array. restart the services if it is running otherwise start 
+
+$sevicesAray = Get-Service -Name Spooler, ALG, Appinfo
+Write-Host $sevicesAray
+ForEach ($service in $sevicesAray ) {
+    if($service.status -eq "Running") {
+        Restart-Service -Name $service.Name
+        Write-Host $service.Name, "is Restarted"
+    } else {
+        Start-Service -Name $service.Name
+        Write-Host $service.Name, "is Stared"
+    }
+
+}
+
+
+#5. WAP to create 3 files in given folder and make sure given folder is available
+$folder = "D:\PowerShell-WorkFolder"
+$folderExistOrNot = Test-Path -Path $folder
+
+$fileNames = "first.txt", "second.txt", "third.txt"
+
+if( $folderExistOrNot ) {
+   foreach( $fileName in $fileNames ) {
+    $fullPath = Join-Path -Path $folder -ChildPath $fileName
+    Write-Host "File Created on the locaation",$fullPath
+    New-Item $fullPath
+   }
+} else {
+    Write-Host "Folder path is not valid"
+}
