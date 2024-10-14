@@ -1,0 +1,52 @@
+Q1. WAP to save Size of folder in text file
+
+Q2. WAP to save no of file no folder in text file form given folder (D:\WorkSpace) 
+
+Q3. WAP to store more than one item/files in array then iterate over array to get name only and size
+
+
+Output
+
+15
+5
+
+No of File:15
+No of Folder:5
+
+No of File:15 Files
+No of Folder:5 Folder
+
+12 Oct 2024 Task
+# WAP to display message () that if given folder size  is greater than 1 GB
+# stop the spooler service if it is running 
+# wap to restart service if spooler service is running  
+# check the notepad process is runing or not 
+# store 3 services in array. restart the services if it is running otherwise start 
+# WAP to create 3 files in given folder and make sure given folder is available
+
+
+
+1. Write PowerShell script that retrieves information about the C drive’s memory usage, free space, in percentage.
+2. To calculate the total free disk space for drives C and D in PowerShell.
+3. Write A Program to fetch all 3 days older file using PowerShell.
+4. Write A Program to fetch all file that are  older than 3 days using PowerShell.
+5. Write a program to delete 3 days older Folder.
+6. Write a Program to get the drives with at least 10 GB of free space.
+7. Write a PowerShell Script fetch all running Services 
+8. Write A program for ATM Machine Functionality like deposit, balance check etc.
+9. Write a Script to change File extension from txt to log of given folder files.
+10. Write a script to create variables by assign the value using input csv file that content variable name and value of variable.
+
+11. Write a program to save in csv file total number of file and total number of folder
+12. Write a program to  save in csv file Free and used drives against the Drive name using loop concept.
+13. Write a script to create custom object from two text file one for Programming languages and another launch year of these language then save into csv file.
+
+Looping Reative Task
+14. To calculate the total free disk space for drives C and D in PowerShell using Loop and Assignment operator.
+15. Write A PowerShell script to calculate the total number of file of given folder using Loop and Assignment operator.
+16. Write A PowerShell script to calculate the total number of Folder of given folder using Loop and Assignment operator.
+17. Write Program to create hash table  from  two input text  file one is Names of student another is Rolls number.
+
+18. Fetch all text file that is greater than 06/02/2023 using power shell
+19. Write a PowerShell Script fetch all running Services and whose type is manual
+Write a program to start services if service is stopped using input text file in which have list of services name.

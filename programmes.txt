@@ -66,6 +66,7 @@ if( $folderExistOrNot ) {
     Write-Host "Folder path is not valid"
 }
 
+#Write A Program to fetch all 3 days older file using PowerShell.
 
 $Path="D:\WorkSpace"
 $date=(Get-Date).AddDays(-3)
@@ -76,4 +77,43 @@ Remove-Item -Path "D:\WorkSpace\olderfile.csv" -Verbose
 $Result|Export-Csv -Path "D:\WorkSpace\olderfile$($lodname).csv" -NoTypeInformation  -Verbose
 
 
+#6.Write PowerShell script that retrieves information about the C drive’s memory usage, free space, in percentage.
 
+$AllDiskDetails = Get-Volume 
+$Cdrivedetails = $AllDiskDetails | Where-Object { $_.DriveLetter -eq "C" }
+$totalSize = $Cdrivedetails.Size
+$SizeRemaining = $Cdrivedetails.SizeRemaining
+
+$FreeSpace = ( $SizeRemaining / $totalSize ) * 100
+
+
+
+# To calculate the total free disk space for drives C and D in PowerShell.
+
+$AllDiskDetails = Get-Volume 
+$Cdrivedetails = $AllDiskDetails | Where-Object { $_.DriveLetter -eq "C" }
+$totalSize = $Cdrivedetails.Size
+$SizeRemaining = $Cdrivedetails.SizeRemaining
+
+$CFreeSpace = ( $SizeRemaining / $totalSize ) * 100
+
+$AllDiskDetails = Get-Volume 
+$Ddrivedetails = $AllDiskDetails | Where-Object { $_.DriveLetter -eq "D" }
+$totalSize = $Ddrivedetails.Size
+$SizeRemaining = $Cdrivedetails.SizeRemaining
+
+$DFreeSpace = ( $SizeRemaining / $totalSize ) * 100
+
+
+*****Second Way and we can say short way*****
+$AllDiskDetails = Get-Volume 
+foreach($AllDiskDetail in $AllDiskDetails ) {
+
+    if( $AllDiskDetail.DriveLetter -eq "C" -or $AllDiskDetail.DriveLetter -eq "D") {
+
+        $totalSize = $AllDiskDetail.Size
+        $SizeRemaining = $AllDiskDetail.SizeRemaining
+        $DFreeSpace = ( $SizeRemaining / $totalSize ) * 100
+        Write-Host $AllDiskDetail.DriveLetter, "=", $DFreeSpace
+    }
+}
