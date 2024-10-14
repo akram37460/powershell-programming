@@ -106,6 +106,7 @@ $DFreeSpace = ( $SizeRemaining / $totalSize ) * 100
 
 
 *****Second Way and we can say short way*****
+
 $AllDiskDetails = Get-Volume 
 foreach($AllDiskDetail in $AllDiskDetails ) {
 
@@ -115,5 +116,18 @@ foreach($AllDiskDetail in $AllDiskDetails ) {
         $SizeRemaining = $AllDiskDetail.SizeRemaining
         $DFreeSpace = ( $SizeRemaining / $totalSize ) * 100
         Write-Host $AllDiskDetail.DriveLetter, "=", $DFreeSpace
+    }
+}
+
+*****Third Way and we can say short way*****
+$AllDiskDetails = Get-Volume
+$driveArray = "C","D"
+
+foreach($AllDiskDetail in $AllDiskDetails) {
+    if($AllDiskDetail.DriveLetter -in $driveArray) {
+        $totalSize = $AllDiskDetail.Size
+        $SizeRemaining = $AllDiskDetail.SizeRemaining
+        $DFreeSpace = ($SizeRemaining / $totalSize) * 100
+        Write-Host $AllDiskDetail.DriveLetter, "=", $DFreeSpace, "%"
     }
 }
